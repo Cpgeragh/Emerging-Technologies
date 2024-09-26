@@ -1,3 +1,3 @@
 # Emerging-Technologies
 
-- Hello from Lab Group A
+- Hello from Lab Group A.
