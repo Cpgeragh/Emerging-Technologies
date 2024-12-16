@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+}
+
+.chatot-container {
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.chat-history {
+    height: 250px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    padding: 10px;
+    text-align: left;
+}
+
+input[type="text"] {
+    width: calc(100% - 80px);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #007Bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
