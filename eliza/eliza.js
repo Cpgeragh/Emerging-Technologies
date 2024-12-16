@@ -7,7 +7,7 @@ const responses ={
 
 function getElizaResponse(userInput) {
 
-    const Input = userInput;
+    const Input = userInput.trim().toLowerCase();
 
     if(responses[Input]) {
 
