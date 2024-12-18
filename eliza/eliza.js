@@ -7,6 +7,27 @@ class ElizaBot {
         };
 
         this.patterns = {
+            greeting: {
+                pattern: /\b(hello|hi|hey)\b/i,
+                responses: [
+                    "Hello! How are you feeling today?",
+                    "Hi there! How are you?"
+                ]
+            },
+            goodbye: {
+                pattern: /\b(bye|goodbye)\b/i,
+                responses: [
+                    "Goodbye! Take care!",
+                    "See you next time!"
+                ]
+            },
+            gratitude: {
+                pattern: /\b(thanks|thank you)\b/i,
+                responses: [
+                    "You're welcome! I'm here to help.",
+                    "No problem! Glad to be of assistance."
+                ]
+            },
             happiness: {
                 pattern: /\b(happy|joyful|excited|great)\b/i,
                 responses: [
@@ -17,7 +38,7 @@ class ElizaBot {
             sadness: {
                 pattern: /\b(sad|down|unhappy|depressed)\b/i,
                 responses: [
-                    "I'm sorry you're {1}. Want to talk about it?",
+                    "I'm sorry you're {1}. Want to talk more?",
                     "You seem {1}. What's going on?"
                 ]
             },
@@ -29,10 +50,17 @@ class ElizaBot {
                     "I’m here to listen if you want to talk about feeling {1}."
                 ]
             },
+            closedResponse: {
+                pattern: /\b(no|nothing|not really|i don't know)\b/i,
+                responses: [
+                    "That's okay. If you're not ready to share, that's fine.",
+                    "I’m here whenever you want to talk."
+                ]
+            },
             default: {
                 responses: [
-                    "I'm not sure I understand.",
-                    "Could you tell me more?"
+                    "I'm not quite sure I understand.",
+                    "Could you tell me more about that?"
                 ]
             }
         };
@@ -87,12 +115,12 @@ class ElizaBot {
                 this.memory.followUpCount++;
                 return this.selectRandomResponse([
                     "That's wonderful! What's the highlight of your day?",
-                    "What else has been going well for you?"
+                    "Anything else that's made you happy recently?"
                 ]);
             } else {
                 this.memory.lastEmotion = null;
                 this.memory.followUpCount = 0;
-                return "Glad you're feeling good. Anything else you'd like to share?";
+                return "I'm glad you're feeling good. Anything else you'd like to share?";
             }
         } else {
             if (this.memory.followUpCount === 0) {
