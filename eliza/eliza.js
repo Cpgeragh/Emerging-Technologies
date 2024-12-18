@@ -1,7 +1,5 @@
 class ElizaBot {
-
     constructor() {
-
         this.memory = {
             lastEmotion: null,
             lastResponse: null,
@@ -29,27 +27,21 @@ class ElizaBot {
                     "Could you tell me more?"
                 ]
             }
-
         };
-
     }
 
     generateResponse(userInput) {
-
         const text = userInput.trim().toLowerCase();
         if (!text) return "It’s okay to take your time.";
-
         if (this.memory.lastEmotion) {
             return this.handleEmotionFollowUp();
         }
 
         for (const key in this.patterns) {
-
             const { pattern, responses } = this.patterns[key];
             const match = pattern && text.match(pattern);
-
             if (match) {
-                let response = responses[Math.floor(Math.random() * responses.length)];
+                let response = this.selectRandomResponse(responses);
                 if (key === "happiness" || key === "sadness") {
                     this.memory.lastEmotion = key;
                     this.memory.followUpCount = 0;
@@ -59,23 +51,23 @@ class ElizaBot {
                 }
                 this.memory.lastResponse = response;
                 return response;
-
             }
-
         }
 
         const fallback = this.patterns.default.responses;
-        const final = fallback[Math.floor(Math.random() * fallback.length)];
-        this.memory.lastResponse = final;
-        return final;
-
+        const finalResponse = this.selectRandomResponse(fallback);
+        this.memory.lastResponse = finalResponse;
+        return finalResponse;
     }
 
     handleEmotionFollowUp() {
         if (this.memory.lastEmotion === "sadness") {
             if (this.memory.followUpCount === 0) {
                 this.memory.followUpCount++;
-                return "What's been making you feel sad lately?";
+                return this.selectRandomResponse([
+                    "What's been making you feel sad lately?",
+                    "Has anything helped you cope?"
+                ]);
             } else {
                 this.memory.lastEmotion = null;
                 this.memory.followUpCount = 0;
@@ -84,7 +76,10 @@ class ElizaBot {
         } else if (this.memory.lastEmotion === "happiness") {
             if (this.memory.followUpCount === 0) {
                 this.memory.followUpCount++;
-                return "That's wonderful! What's the highlight of your day?";
+                return this.selectRandomResponse([
+                    "That's wonderful! What's the highlight of your day?",
+                    "What else has been going well for you?"
+                ]);
             } else {
                 this.memory.lastEmotion = null;
                 this.memory.followUpCount = 0;
@@ -106,7 +101,6 @@ class ElizaBot {
 const eliza = new ElizaBot();
 
 function elizaResponse() {
-
     const userInputField = document.getElementById("userInput");
     const chatHistory = document.getElementById("chatHistory");
     const userText = userInputField.value.trim();
@@ -117,19 +111,12 @@ function elizaResponse() {
     chatHistory.innerHTML += `<div><strong>Eliza:</strong> ${elizaReply}</div>`;
     userInputField.value = "";
     chatHistory.scrollTop = chatHistory.scrollHeight;
-
 }
 
 document.getElementById("sendButton").onclick = elizaResponse;
-
 document.getElementById("userInput").addEventListener("keypress", (event) => {
-
     if (event.key === "Enter") {
-
         event.preventDefault();
         elizaResponse();
-
     }
-
-}
-);
+});
