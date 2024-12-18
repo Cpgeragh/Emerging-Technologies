@@ -21,6 +21,14 @@ class ElizaBot {
                     "You seem {1}. What's going on?"
                 ]
             },
+            emotional: {
+                pattern: /\b(angry|frustrated|bored|tired|anxious|stressed|lonely|nervous|scared|confused)\b/i,
+                responses: [
+                    "It’s okay to feel {1}. Can you tell me more?",
+                    "Why do you feel {1}? Has something happened recently?",
+                    "I’m here to listen if you want to talk about feeling {1}."
+                ]
+            },
             default: {
                 responses: [
                     "I'm not sure I understand.",
@@ -33,6 +41,7 @@ class ElizaBot {
     generateResponse(userInput) {
         const text = userInput.trim().toLowerCase();
         if (!text) return "Take your time.";
+
         if (this.memory.lastEmotion) {
             return this.handleEmotionFollowUp();
         }
@@ -42,8 +51,8 @@ class ElizaBot {
             const match = pattern && text.match(pattern);
             if (match) {
                 let response = this.selectRandomResponse(responses);
-                if (key === "happiness" || key === "sadness") {
-                    this.memory.lastEmotion = key;
+                if (key === "happiness" || key === "sadness" || key === "emotional") {
+                    this.memory.lastEmotion = (key === "emotional") ? match[1] : key;
                     this.memory.followUpCount = 0;
                     if (match[1]) {
                         response = response.replace("{1}", match[1]);
@@ -55,9 +64,9 @@ class ElizaBot {
         }
 
         const fallback = this.patterns.default.responses;
-        const finalResponse = this.selectRandomResponse(fallback);
-        this.memory.lastResponse = finalResponse;
-        return finalResponse;
+        const final = this.selectRandomResponse(fallback);
+        this.memory.lastResponse = final;
+        return final;
     }
 
     handleEmotionFollowUp() {
@@ -85,8 +94,16 @@ class ElizaBot {
                 this.memory.followUpCount = 0;
                 return "Glad you're feeling good. Anything else you'd like to share?";
             }
+        } else {
+            if (this.memory.followUpCount === 0) {
+                this.memory.followUpCount++;
+                return "Tell me more about how you've been feeling.";
+            } else {
+                this.memory.lastEmotion = null;
+                this.memory.followUpCount = 0;
+                return "It's okay to share whatever is on your mind. Anything else?";
+            }
         }
-        return "Tell me more.";
     }
 
     selectRandomResponse(responses) {
