@@ -32,7 +32,7 @@ class ElizaBot {
 
     generateResponse(userInput) {
         const text = userInput.trim().toLowerCase();
-        if (!text) return "It’s okay to take your time.";
+        if (!text) return "Take your time.";
         if (this.memory.lastEmotion) {
             return this.handleEmotionFollowUp();
         }
@@ -83,7 +83,7 @@ class ElizaBot {
             } else {
                 this.memory.lastEmotion = null;
                 this.memory.followUpCount = 0;
-                return "I'm glad you're feeling good. Anything else you'd like to share?";
+                return "Glad you're feeling good. Anything else you'd like to share?";
             }
         }
         return "Tell me more.";
@@ -101,16 +101,25 @@ class ElizaBot {
 const eliza = new ElizaBot();
 
 function elizaResponse() {
-    const userInputField = document.getElementById("userInput");
+    const userInput = document.getElementById("userInput");
     const chatHistory = document.getElementById("chatHistory");
-    const userText = userInputField.value.trim();
-    if (!userText) return;
+    const typingIndicator = document.getElementById("typingIndicator");
 
-    chatHistory.innerHTML += `<div><strong>You:</strong> ${userText}</div>`;
-    const elizaReply = eliza.generateResponse(userText);
-    chatHistory.innerHTML += `<div><strong>Eliza:</strong> ${elizaReply}</div>`;
-    userInputField.value = "";
+    const inputText = userInput.value.trim();
+    if (!inputText) return;
+
+    chatHistory.innerHTML += `<div class="message user-message">${inputText}<span class="timestamp">${getTimestamp()}</span></div>`;
+    userInput.value = "";
     chatHistory.scrollTop = chatHistory.scrollHeight;
+
+    typingIndicator.classList.add("visible");
+
+    setTimeout(() => {
+        const elizaReply = eliza.generateResponse(inputText);
+        typingIndicator.classList.remove("visible");
+        chatHistory.innerHTML += `<div class="message eliza-message">${elizaReply}<span class="timestamp">${getTimestamp()}</span></div>`;
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }, 1000);
 }
 
 document.getElementById("sendButton").onclick = elizaResponse;
@@ -120,3 +129,8 @@ document.getElementById("userInput").addEventListener("keypress", (event) => {
         elizaResponse();
     }
 });
+
+function getTimestamp() {
+    const now = new Date();
+    return now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
+}
