@@ -1,4 +1,12 @@
 class ElizaBot {
+    constructor() {
+        this.memory = {
+            lastEmotion: null,
+            lastResponse: null,
+            followUpCount: 0
+        };
+    }
+
     generateResponse(userInput) {
         const cleanedInput = userInput.trim().toLowerCase();
         if (!cleanedInput) {
