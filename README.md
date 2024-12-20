@@ -103,7 +103,7 @@ This project is made up of two main code sections:
 
 - Challenge: Making the chatbot feel human-like required features such as a typing indicator and natural response delays.
 - Solution: A visible typing indicator and a 1-second delay before responses was added, simulating a human responder.
-- Reflection: Small UX improvements had a good impact on the chatbot’s realism, showing how important design details are for user engagement.
+- Reflection: Small improvements had a good impact on the chatbot’s realism, showing how important design details are for user engagement.
 
 
 
@@ -112,15 +112,28 @@ This project is made up of two main code sections:
 
 ### **Third-Order Letter Approximation Model**
 
+- This is an example of the Trigram model working. 
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <img src="images/CleanedText.jpg" alt="Cleaned Text Screenshot" width="700"> 
+    <img src="images/GeneratedText.jpg" alt="Generated Text Screenshot" width="700">
+    <img src="images/LoadedWordList.jpg" alt="Words List Loaded Successfully Screenshot" width="700">
+    <img src="images/TrigramPercentageAnalysis.jpg" alt="Valid English Words Percentage Screenshot" width="700">
+</div>
+
+
 ### **ELIZA Chatbot**
 
 #### ELIZA in Action
-<img src="images/Chat1.jpg" alt="ELIZA Chatbot Screenshot" width="300"> 
-<img src="images/Chat2.jpg" alt="ELIZA Chatbot Screenshot" width="300">
-<img src="images/Chat3.jpg" alt="ELIZA Chatbot Screenshot" width="300">
-<img src="images/Chat4.jpg" alt="ELIZA Chatbot Screenshot" width="300">
 
-This is an example of a user interacting with the ELIZA chatbot on the web interface.
+- This is an example of a user interacting with the ELIZA chatbot on the web interface. It shows the responsive nature of the bot and the UI details that make the bot seem more human-like.
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <img src="images/Chat1.jpg" alt="ELIZA Chatbot Screenshot" width="300"> 
+    <img src="images/Chat2.jpg" alt="ELIZA Chatbot Screenshot" width="300">
+    <img src="images/Chat3.jpg" alt="ELIZA Chatbot Screenshot" width="300">
+    <img src="images/Chat4.jpg" alt="ELIZA Chatbot Screenshot" width="300">
+</div>
 
 
 ## **Tests**
