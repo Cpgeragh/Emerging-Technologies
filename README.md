@@ -1,3 +1,11 @@
-# Emerging-Technologies
+# **Third-Order Letter Approximation Model & ELIZA Chatbot**
 
-- Hello from Lab Group A
+
+## **Features**
+
+## **Installation and Setup**
+
+## **How to Use**
+
+## **Outputs**
+
