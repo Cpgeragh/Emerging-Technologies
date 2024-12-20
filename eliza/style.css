@@ -111,6 +111,7 @@ header {
     border-top: 1px solid #ddd;
 }
 
+/* Input Field */
 input[type="text"] {
     flex: 1;
     padding: 10px;
@@ -120,11 +121,13 @@ input[type="text"] {
     transition: border 0.3s ease;
 }
 
+/* Input Field Focus */
 input[type="text"]:focus {
     outline: none;
     border: 1px solid #007bff;
 }
 
+/* Send Button */
 button {
     padding: 10px 15px;
     background-color: #007bff;
@@ -136,6 +139,7 @@ button {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Send Button Hover */
 button:hover {
     background-color: #0056b3;
     transform: scale(1.05);

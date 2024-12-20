@@ -1,12 +1,17 @@
 // ELIZA Chatbot Implementation
 class ElizaBot {
+    // Memory to track user emotions, responses, and follow-up interactions
     constructor() {
         this.memory = {
+             // Tracks last detected emotion from the user
             lastEmotion: null,
+            // Tracks last response sent by ELIZA
             lastResponse: null,
+            // Tracks number of follow-up responses for a specific emotion
             followUpCount: 0
         };
 
+        // Pattern-matching rules and corresponding responses for ELIZA
         this.patterns = {
             greeting: {
                 pattern: /\b(hello|hi|hey)\b/i,
@@ -90,8 +95,10 @@ class ElizaBot {
         };
     }
 
+    // Generate a response based on the user input
     generateResponse(userInput) {
         const cleanedInput = userInput.trim().toLowerCase();
+        // Handle empty input
         if (cleanedInput === "") {
             return "It's okay to take your time. Let me know when you're ready to share.";
         }
@@ -122,6 +129,7 @@ class ElizaBot {
             return this.handleEmotionFollowUp(cleanedInput);
         }
     
+        // Check for patterns matching emotional states
         for (const key in this.patterns) {
             const { pattern, responses } = this.patterns[key];
             const match = cleanedInput.match(pattern);
@@ -150,6 +158,7 @@ class ElizaBot {
         return this.selectRandomResponse(this.patterns.unknown.responses);
     }
 
+    // Handle follow-up responses based on the user's emotional state
     handleEmotionFollowUp(userInput = '') {
         const cleanedInput = userInput.trim().toLowerCase();
         
@@ -253,6 +262,7 @@ class ElizaBot {
         }
     }
 
+    // Select a random response from a list of possible responses
     selectRandomResponse(responses) {
         let response;
         do {
@@ -262,6 +272,7 @@ class ElizaBot {
     }
 }
 
+// Initialize ELIZA chatbot
 const eliza = new ElizaBot();
 
 // Add a welcome message on page load
@@ -279,20 +290,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Handle user input and generate ELIZA's response
 function elizaResponse() {
     const userInput = document.getElementById("userInput");
     const chatHistory = document.getElementById("chatHistory");
     const typingIndicator = document.getElementById("typingIndicator");
 
+    // Get user input and clear the input field
     const inputText = userInput.value.trim();
     if (inputText === "") return;
 
+    // Add user message to the chat history
     chatHistory.innerHTML += `<div class="message user-message">${inputText}<span class="timestamp">${getTimestamp()}</span></div>`;
     userInput.value = "";
     chatHistory.scrollTop = chatHistory.scrollHeight;
 
+    // Show typing indicator and generate ELIZA's response
     typingIndicator.classList.add("visible");
 
+    // Generate ELIZA's response after a delay to simulate typing
     setTimeout(() => {
         const elizaReply = eliza.generateResponse(inputText);
         typingIndicator.classList.remove("visible");
@@ -301,6 +317,7 @@ function elizaResponse() {
     }, 1000);
 }
 
+// Handle user input when the send button is clicked or Enter key is pressed
 document.getElementById("sendButton").onclick = elizaResponse;
 document.getElementById("userInput").addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
@@ -309,6 +326,7 @@ document.getElementById("userInput").addEventListener("keypress", (event) => {
     }
 });
 
+// Get the current time in HH:MM format
 function getTimestamp() {
     const now = new Date();
     return now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");

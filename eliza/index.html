@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELIZA Chatbot</title>
+    <!-- Link to the external CSS file for styling -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Main container for the chatbot -->
     <div class="chatbot-container">
+        <!-- Header section with the chatbot's title -->
         <header>
             <h1>ELIZA Chatbot</h1>
         </header>
 
+        <!-- Chat history container where user and ELIZA messages will appear -->
         <div id="chatHistory" class="chat-history"></div>
 
+        <!-- Typing indicator to show when ELIZA is typing a response -->
         <div id="typingIndicator" class="typing-indicator">
             ELIZA is typing...
         </div>
 
+        <!-- Input container for user interactions -->
         <div class="input-container">
             <input type="text" id="userInput" placeholder="Type your message..." autofocus>
             <button id="sendButton">Send</button>
         </div>
     </div>
+    <!-- Link to the external JavaScript file for chatbot functionality -->
     <script src="eliza.js"></script>
 </body>
 </html>
