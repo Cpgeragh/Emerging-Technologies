@@ -38,10 +38,10 @@ class ElizaBot {
             happiness: {
                 pattern: /\b(happy|joyful|excited|good|great|elated|thrilled)\b/i,
                 responses: [
-                    "That’s wonderful to hear! What’s been bringing you joy?",
-                    "I'm glad to hear you're {1}. What’s been the highlight of your day?",
-                    "That sounds fantastic! Can you tell me more about what's making you feel {1}?",
-                    "Happiness is something to celebrate! What’s been the best part of it?"
+                    "That’s wonderful to hear! What’s has made you feel so {1}?",
+                    "I'm delighted to hear you're {1}. What has brought this about?",
+                    "That sounds fantastic! Can you tell me about what's making you feel so {1}?",
+                    "This is something to celebrate! What has happened to make you feel {1}?"
                 ]
             },
             sadness: {
@@ -58,9 +58,8 @@ class ElizaBot {
                 responses: [
                     "It’s okay to feel {1}. Can you tell me more about it?",
                     "Why do you feel {1}? Has something happened recently?",
-                    "I’m here to listen if you want to talk about feeling {1}.",
-                    "That must be difficult. What do you think is causing you to feel {1}?",
-                    "It’s understandable to feel {1} sometimes. Would you like to share more?"
+                    "That must be difficult. What is causing you to feel {1}?",
+                    "It’s understandable to feel {1} sometimes. Would you like to share why you feel that way?"
                 ]
             },
             closedResponse: {
@@ -88,19 +87,35 @@ class ElizaBot {
     generateResponse(userInput) {
         const cleanedInput = userInput.trim().toLowerCase();
         if (cleanedInput === "") {
-            return "It’s okay to take your time. Let me know when you’re ready to share.";
+            return "It's okay to take your time. Let me know when you're ready to share.";
         }
-
+    
+        if (this.patterns.gratitude.pattern.test(cleanedInput)) {
+            this.memory.lastEmotion = null;
+            this.memory.followUpCount = 0;
+            return this.selectRandomResponse(this.patterns.gratitude.responses);
+        }
+        if (this.patterns.goodbye.pattern.test(cleanedInput)) {
+            this.memory.lastEmotion = null;
+            this.memory.followUpCount = 0;
+            return this.selectRandomResponse(this.patterns.goodbye.responses);
+        }
+        if (this.patterns.closedResponse.pattern.test(cleanedInput)) {
+            this.memory.lastEmotion = null;
+            this.memory.followUpCount = 0;
+            return this.selectRandomResponse(this.patterns.closedResponse.responses);
+        }
+    
         if (this.memory.lastEmotion) {
-            return this.handleEmotionFollowUp();
+            return this.handleEmotionFollowUp(cleanedInput);
         }
-
+    
         for (const key in this.patterns) {
             const { pattern, responses } = this.patterns[key];
             const match = cleanedInput.match(pattern);
             if (match) {
                 let response = this.selectRandomResponse(responses);
-
+    
                 if (key === "sadness") {
                     this.memory.lastEmotion = "sadness";
                     this.memory.followUpCount = 0;
@@ -114,60 +129,78 @@ class ElizaBot {
                     this.memory.followUpCount = 0;
                     response = response.replace("{1}", match[1]);
                 }
-
+    
                 this.memory.lastResponse = response;
                 return response;
             }
         }
-
+    
         return this.selectRandomResponse(this.patterns.default.responses);
     }
 
-    handleEmotionFollowUp() {
+    handleEmotionFollowUp(userInput = '') {
+        const cleanedInput = userInput.trim().toLowerCase();
+        
+        if (this.patterns.gratitude.pattern.test(cleanedInput)) {
+            this.memory.lastEmotion = null;
+            this.memory.followUpCount = 0;
+            return this.selectRandomResponse(this.patterns.gratitude.responses);
+        }
+        if (this.patterns.goodbye.pattern.test(cleanedInput)) {
+            this.memory.lastEmotion = null;
+            this.memory.followUpCount = 0;
+            return this.selectRandomResponse(this.patterns.goodbye.responses);
+        }
+        if (this.patterns.closedResponse.pattern.test(cleanedInput)) {
+            this.memory.lastEmotion = null;
+            this.memory.followUpCount = 0;
+            return this.selectRandomResponse(this.patterns.closedResponse.responses);
+        }
+    
         if (this.memory.lastEmotion === "sadness") {
             if (this.memory.followUpCount === 0) {
                 this.memory.followUpCount++;
                 return this.selectRandomResponse([
-                    "I see. How has this been affecting you?",
-                    "That sounds really hard. Can you tell me more about how you’re feeling?",
+                    "I'm so sorry to hear that. How has this been affecting you?",
+                    "That sounds really hard. Can you tell me more about how you're feeling?",
                     "It must be tough to go through this. How have you been coping so far?"
                 ]);
             } else if (this.memory.followUpCount === 1) {
                 this.memory.followUpCount++;
                 return this.selectRandomResponse([
-                    "It sounds like you’re going through a lot. How are you taking care of yourself?",
-                    "It’s okay to feel overwhelmed sometimes. What’s been helping you manage this?",
-                    "That must be very difficult. Is there anything that’s brought you comfort during this time?"
+                    "It sounds like you're going through a lot. How are you taking care of yourself?",
+                    "It's okay to feel overwhelmed sometimes. What's been helping you manage this?",
+                    "That must be very difficult. Is there anything that's brought you comfort during this time?"
                 ]);
             } else {
                 this.memory.lastEmotion = null;
                 this.memory.followUpCount = 0;
                 return this.selectRandomResponse([
-                    "It’s okay to feel sad sometimes. What’s on your mind now?",
-                    "Let’s take this one step at a time. Is there something else you’d like to talk about?"
+                    "I hope you can feel better soon, can I help you in any other way?",
+                    "Just take everything one step at a time, you will feel better eventually, I know it. Are there any other feelings you'd like to share?"
                 ]);
             }
         } else if (this.memory.lastEmotion === "happiness") {
             if (this.memory.followUpCount === 0) {
                 this.memory.followUpCount++;
                 return this.selectRandomResponse([
-                    "That’s wonderful! What’s been the highlight of your day?",
-                    "It’s great to hear you’re feeling this way. What else has been going well for you?",
+                    "That's wonderful news! What's been the highlight of it so far?",
+                    "It's great to hear you're feeling this way. What else has been going well for you?",
                     "Happiness is precious! Can you tell me more about it?"
                 ]);
             } else if (this.memory.followUpCount === 1) {
                 this.memory.followUpCount++;
                 return this.selectRandomResponse([
-                    "I love hearing about positive moments. What’s on your mind now?",
-                    "What else has brought you joy recently?",
-                    "Let’s keep this positivity going! What else would you like to share?"
+                    "I love hearing about positive moments. What's on your mind now?",
+                    "That's brillant, has anything else has brought you joy recently?",
+                    "Let's keep this positivity going! What else would you like to share that has made you feel good?"
                 ]);
             } else {
                 this.memory.lastEmotion = null;
                 this.memory.followUpCount = 0;
                 return this.selectRandomResponse([
-                    "I’m glad to hear that. Is there anything else you’d like to share?",
-                    "It’s great that you’re feeling this way. What else is on your mind?"
+                    "I'm glad to hear that. Is there any other feelings you'd like to share?",
+                    "It's great that you're feeling this way, have you any other feelings you'd like to talk about?",
                 ]);
             }
         } else if (this.memory.lastEmotion) {
@@ -175,7 +208,7 @@ class ElizaBot {
                 this.memory.followUpCount++;
                 return this.selectRandomResponse([
                     `I see. How has feeling ${this.memory.lastEmotion} been affecting you?`,
-                    `It’s okay to feel ${this.memory.lastEmotion}. Can you share what’s been going on?`,
+                    `It's okay to feel ${this.memory.lastEmotion}. Can you share what's been going on?`,
                     `What do you think has been causing you to feel ${this.memory.lastEmotion}?`
                 ]);
             } else if (this.memory.followUpCount === 1) {
@@ -183,21 +216,21 @@ class ElizaBot {
                 return this.selectRandomResponse([
                     `That must be challenging. How have you been managing feeling ${this.memory.lastEmotion}?`,
                     `Sometimes feeling ${this.memory.lastEmotion} can be difficult. How are you coping with it?`,
-                    `It’s okay to talk about feeling ${this.memory.lastEmotion}. What’s been helping you through this?`
+                    `It's okay to talk about feeling ${this.memory.lastEmotion}. What's been helping you through this?`
                 ]);
             } else {
                 this.memory.lastEmotion = null;
                 this.memory.followUpCount = 0;
                 return this.selectRandomResponse([
-                    "It’s okay to share what’s on your mind. Is there anything else you’d like to discuss?",
-                    "Let’s take things one step at a time. What’s been on your mind recently?"
+                    "It's okay to share what's on your mind. Is there any other feelings you'd like to discuss?",
+                    "Just take things one step at a time, that will help you maange all this. Has there been anything else on your mind recently?"
                 ]);
             }
         } else {
             return this.selectRandomResponse([
                 "I see. How has this been affecting you?",
                 "What do you think led to this?",
-                "That sounds difficult. What’s been the hardest part for you?"
+                "That sounds difficult. What's been the hardest part for you?"
             ]);
         }
     }
