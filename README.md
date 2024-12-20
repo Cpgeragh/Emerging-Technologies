@@ -1,5 +1,32 @@
 # **Third-Order Letter Approximation Model & ELIZA Chatbot**
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [History](#history)
+  - [Trigram Models](#trigram-models)
+  - [ELIZA Chatbot](#eliza-chatbot)
+- [Features](#features)
+  - [Third-Order Letter Approximation Model](#third-order-letter-approximation-model)
+  - [ELIZA Chatbot](#eliza-chatbot)
+- [Installation and Deployment](#installation-and-deployment)
+  - [Third-Order Letter Approximation Model](#third-order-letter-approximation-model-1)
+  - [ELIZA Chatbot](#eliza-chatbot-1)
+- [How to Run](#how-to-run)
+  - [Third-Order Letter Approximation Model](#third-order-letter-approximation-model-2)
+  - [ELIZA Chatbot](#eliza-chatbot-2)
+- [Expected Outputs and Demonstration](#expected-outputs-and-demonstration)
+  - [Third-Order Letter Approximation Model](#third-order-letter-approximation-model-3)
+  - [ELIZA Chatbot](#eliza-chatbot-3)
+- [Development Difficulties](#development-difficulties)
+  - [Third-Order Letter Approximation Model](#third-order-letter-approximation-model-4)
+  - [ELIZA Chatbot](#eliza-chatbot-4)
+- [Testing](#testing)
+  - [Third-Order Letter Approximation Model Examples](#third-order-letter-approximation-model-examples)
+  - [ELIZA Chatbot](#eliza-chatbot-5)
+- [Bibliography](#bibliography)
+
+
 ## **Project Overview**
 
 This project is made up of two main code sections:
