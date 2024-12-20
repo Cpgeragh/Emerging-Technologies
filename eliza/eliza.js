@@ -79,16 +79,14 @@ class ElizaBot {
                     "I appreciate you sharing with me. Can you tell me more about how you're feeling?"
                 ]
             },
-            default: {
+            unknown: {
                 responses: [
-                    "That must have been challenging. Can you tell me more?",
-                    "I see. How has this been affecting you?",
-                    "It sounds like there’s a lot on your mind. What do you think led to this?",
-                    "I’d like to hear more about how you’re feeling.",
-                    "How are you coping with this situation?",
-                    "That sounds difficult. What’s been the hardest part for you?"
+                    "I'm not quite sure I understand. Could you tell me how you're feeling?",
+                    "I want to help, but I'm having trouble following. Could you share what emotions you're experiencing?",
+                    "I'm not sure I caught that. Do you want tell me more about how you're feeling?",
                 ]
             }
+        
         };
     }
 
@@ -149,7 +147,7 @@ class ElizaBot {
             }
         }
     
-        return this.selectRandomResponse(this.patterns.default.responses);
+        return this.selectRandomResponse(this.patterns.unknown.responses);
     }
 
     handleEmotionFollowUp(userInput = '') {
