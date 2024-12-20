@@ -62,13 +62,21 @@ class ElizaBot {
                     "It’s understandable to feel {1} sometimes. Would you like to share why you feel that way?"
                 ]
             },
-            closedResponse: {
+            negativeResponse: {
                 pattern: /\b(no|nothing|i don't know|not really)\b/i,
                 responses: [
                     "That's okay. It’s alright if you’re not ready to share. Is there anything else I can help with?",
                     "I’m here to listen whenever you’re ready.",
                     "Take your time. You don’t have to talk about it if you don’t want to.",
                     "Sometimes it’s hard to talk about things, and that’s okay."
+                ]
+            },
+            positiveResponse: {
+                pattern: /\b(yes|yeah|definitely|absolutely|sure|of course|okay|alright)\b/i,
+                responses: [
+                    "I'm glad you're willing to share. Can you tell me more about what you are feeling?",
+                    "It helps to talk things through. What other feelings would you like to share?",
+                    "I appreciate you sharing with me. Can you tell me more about how you're feeling?"
                 ]
             },
             default: {
@@ -100,10 +108,16 @@ class ElizaBot {
             this.memory.followUpCount = 0;
             return this.selectRandomResponse(this.patterns.goodbye.responses);
         }
-        if (this.patterns.closedResponse.pattern.test(cleanedInput)) {
+        if (this.patterns.negativeResponse.pattern.test(cleanedInput)) {
             this.memory.lastEmotion = null;
             this.memory.followUpCount = 0;
-            return this.selectRandomResponse(this.patterns.closedResponse.responses);
+            return this.selectRandomResponse(this.patterns.negativeResponse.responses);
+        }
+
+        if (this.patterns.positiveResponse.pattern.test(cleanedInput)) {
+            this.memory.lastEmotion = null;
+            this.memory.followUpCount = 0;
+            return this.selectRandomResponse(this.patterns.positiveResponse.responses);
         }
     
         if (this.memory.lastEmotion) {
@@ -151,10 +165,16 @@ class ElizaBot {
             this.memory.followUpCount = 0;
             return this.selectRandomResponse(this.patterns.goodbye.responses);
         }
-        if (this.patterns.closedResponse.pattern.test(cleanedInput)) {
+        if (this.patterns.negativeResponse.pattern.test(cleanedInput)) {
             this.memory.lastEmotion = null;
             this.memory.followUpCount = 0;
-            return this.selectRandomResponse(this.patterns.closedResponse.responses);
+            return this.selectRandomResponse(this.patterns.negativeResponse.responses);
+        }
+
+        if (this.patterns.positiveResponse.pattern.test(cleanedInput)) {
+            this.memory.lastEmotion = null;
+            this.memory.followUpCount = 0;
+            return this.selectRandomResponse(this.patterns.positiveResponse.responses);
         }
     
         if (this.memory.lastEmotion === "sadness") {
