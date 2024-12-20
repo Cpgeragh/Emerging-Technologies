@@ -43,7 +43,7 @@ This project is made up of two main code sections:
     - This allows us to demonstrate how pattern matching and rule-based logic can help simulate meaningful, human-like conversations.
     - It is very interesting to learn about AI's role in real-world applications like real-time communication and mental health support.
 
-Github Issues will be used to plan out my work and track my progress.
+- Github Issues will be used to plan out my work and track my progress. (https://github.com/Cpgeragh/Emerging-Technologies/issues)
 
 
 ## **History**
@@ -141,6 +141,8 @@ Github Issues will be used to plan out my work and track my progress.
 
 ## **Development Difficulties**
 
+- Challenges and solutions were documented and managed using GitHub Issues. This helped ensure that progress was tracked and that all identified issues were addressed.
+
 ### **Third-Order Letter Approximation Model**
 
 #### Highlights
@@ -219,7 +221,7 @@ The images under this section showcase some issues encountered when building and
 </div>
 
 ## **Acknowledgments**
-This project benefited from the assistance of OpenAI's ChatGPT for debugging and clsrification purposes[9].
+This project benefited from the assistance of OpenAI's ChatGPT for debugging and clsrification purposes[9], as well as GitHub Copilot for code suggestions and development support [11].
 
 ## **References**
 
@@ -227,19 +229,21 @@ This project benefited from the assistance of OpenAI's ChatGPT for debugging and
 
 2. Project Gutenberg. (n.d.). Free eBooks - Project Gutenberg. [Link to Project Gutenberg](https://www.gutenberg.org/)
 
-3. Jurafsky, D., & Martin, J. H. (2024). *Speech and Language Processing*. Chapter 2: Regular Expressions, Tokenization, Edit Distance. Stanford University. [PDF Link](https://web.stanford.edu/~jurafsky/slp3/2.pdf)
+3. Jurafsky, D., & Martin, J. H. (2024). *Speech and Language Processing*. Chapter 2: Regular Expressions, Tokenization, Edit Distance. Stanford University. [Link to Document](https://web.stanford.edu/~jurafsky/slp3/2.pdf)
 
-4. Jurafsky, D., & Martin, J. H. (2024). *Speech and Language Processing*. Chapter 3: N-gram Language Models. Stanford University. [PDF Link](https://web.stanford.edu/~jurafsky/slp3/3.pdf)
+4. Jurafsky, D., & Martin, J. H. (2024). *Speech and Language Processing*. Chapter 3: N-gram Language Models. Stanford University. [Link to Document](https://web.stanford.edu/~jurafsky/slp3/3.pdf)
 
 5. GeeksforGeeks. (2024). How to remove all Non-ASCII characters from the string using JavaScript? *GeeksforGeeks.* [Link to Article](https://www.geeksforgeeks.org/how-to-remove-all-non-ascii-characters-from-the-string-using-javascript/)
 
 6. Programming in Python. (n.d.). Trigrams – Simple Text Manipulation. *UW PCE Python Programming Certificate.* Retrieved from [Link to Article](https://uwpce-pythoncert.github.io/ProgrammingInPython/exercises/trigrams/trigrams.html)
 
-7. Springer Nature Link. (2024). Exploring the Future Development of Artificial Intelligence (AI) Applications in Chatbots: A Bibliometric Analysis. Retrieved from Springer.
+7. Springer Nature Link. (2024). Exploring the Future Development of Artificial Intelligence (AI) Applications in Chatbots: A Bibliometric Analysis. [Link to Document](https://link.springer.com/article/10.1007/s12369-022-00956-0)
 
-8. GitHub. (2024). GitHub Pages Documentation. Learn how to create a website directly from a repository on GitHub. Retrieved from GitHub Documentation.
+8. GitHub. (2024). GitHub Pages Documentation. Learn how to create a website directly from a repository on GitHub. [Link to Article](https://docs.github.com/en/pages)
 
-9. OpenAI. (2024). ChatGPT [Large language model]. Retrieved from https://chat.openai.com
+9. OpenAI. (2024). ChatGPT [Large language model]. [Link to Documentation](https://platform.openai.com/docs/concepts)
 
-10. Shannon, C. E. (1948). A Mathematical Theory of Communication. Bell Telephone Laboratories. Link to Document
+10. Shannon, C. E. (1948). A Mathematical Theory of Communication. Bell Telephone Laboratories. [Link to Document](https://www.scribd.com/document/373986823/Claude-Shannon-A-Mathematical-Theory-of-Communications-1948)
+
+11. GitHub Copilot. (2024). AI-powered code completion and suggestion tool. GitHub. [Link to Documentation](https://github.com/features/copilot)
 
