@@ -1,5 +1,20 @@
 # **Third-Order Letter Approximation Model & ELIZA Chatbot**
 
+## **Project Overview**
+
+This project is made up of two main code sections:
+
+- **Third-Order Letter Approximation Model**
+    - Analyses trigram patterns in English texts.
+    - Attempts to generate sentences that are grammatically realistic.
+    - This allows us to understand how simple statistical models can identify and predict common sequences in language.
+    - This is very interesting learn about, espceially for more advanced uses like in AI text generation.
+  
+- **ELIZA Chatbot**
+    - Engages in empathetic, conversational interactions with users.
+    - Responds based on user inputs using pattern matching.
+    - This allows us to demonstrate how pattern matching and rule-based logic can help simulate meaningful, human-like conversations.
+    - It is very interesting to learn about AI's role in real-world applications like real-time communication and mental health support.
 
 ## **Features**
 
@@ -52,6 +67,12 @@
 
 
 ## **Development**
+
+### **Third-Order Letter Approximation Model**
+
+### **ELIZA Chatbot**
+
+
 
 ## **Outputs**
 

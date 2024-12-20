@@ -264,6 +264,21 @@ class ElizaBot {
 
 const eliza = new ElizaBot();
 
+// Add a welcome message on page load
+document.addEventListener("DOMContentLoaded", () => {
+    const chatHistory = document.getElementById("chatHistory");
+    
+    // Add welcome message to the chat history
+    if (chatHistory) {
+        chatHistory.innerHTML += `<div class="message eliza-message">
+            Hi, I'm ELIZA. I'm here to listen and help you process your thoughts. Just type how you're feeling or say hello to start!
+            <span class="timestamp">${getTimestamp()}</span>
+        </div>`;
+    } else {
+        console.error("chatHistory element not found!");
+    }
+});
+
 function elizaResponse() {
     const userInput = document.getElementById("userInput");
     const chatHistory = document.getElementById("chatHistory");
