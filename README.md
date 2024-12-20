@@ -16,8 +16,24 @@ This project is made up of two main code sections:
     - This allows us to demonstrate how pattern matching and rule-based logic can help simulate meaningful, human-like conversations.
     - It is very interesting to learn about AI's role in real-world applications like real-time communication and mental health support.
 
+Github Issues will be used to plan out my work and track my progress.
+
 
 ## **History**
+
+### **Trigram Models**
+
+- Trigram Models are statistical language models used to predict the probability of a sequence of three consecutive characters based on the preceding two. These models are part of n-gram models, which have been foundational in natural language processing (NLP).
+- Probabilistic Approach: Trigram models use the function of the probability of a token depends only on the two preceding tokens, simplifying calculations and making them suitable for real-world applications.
+- Applications in AI: Before neural network-based approaches became the norm, trigram models were standard in language modeling, significantly influencing the development of modern NLP tools like predictive text keyboards.
+- Trigram models represent a simpler yet powerful method for understanding sequential patterns in text. They serve as a gateway to more advanced statistical and machine learning models.
+
+### **ELIZA Chatbot**
+- ELIZA was one of the first chatbots ever created, developed by Joseph Weizenbaum in 1966 at the Massachusetts Institute of Technology (MIT). It simulated a psychotherapist, responding to user inputs with questions and reflections.
+
+- Early Development: ELIZA used simple pattern-matching techniques and substitution rules to analyze and respond to user text.This allowed it to give the illusion of understanding.
+- Impact: Weizenbaum created ELIZA partly to demonstrate the superficiality of human-computer interactions. However, many users found the bot compelling, sparking debates about the ethics of AI in personal and emotional situations.
+- Legacy: ELIZA laid the groundwork for modern chatbots and conversational AI.
 
 ## **Features**
 
@@ -68,6 +84,33 @@ This project is made up of two main code sections:
 
 - Access via Github Spaces: https://cpgeragh.github.io/Emerging-Technologies/
 
+## **Expected Outputs and Demonstration**
+
+### **Third-Order Letter Approximation Model**
+
+- This is an example of the Trigram model working, we can see the texts being cleaned, the new text being generated, the Trigrams being extracted and then the real word analysis being completed. 
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <img src="images/CleanedText.jpg" alt="Cleaned Text Screenshot" width="1000"> 
+    <img src="images/GeneratedText.jpg" alt="Generated Text Screenshot" width="1000">
+    <img src="images/ExtractedTrigrams.jpg" alt="Extracted Trigrams and Count Screenshot" width="300">
+    <img src="images/LoadedWordList.jpg" alt="Words List Loaded Successfully Screenshot" width="1000">
+    <img src="images/TrigramPercentageAnalysis.jpg" alt="Valid English Words Percentage Screenshot" width="1000">
+</div>
+
+
+### **ELIZA Chatbot**
+
+#### ELIZA in Action
+
+- This is an example of a user interacting with the ELIZA chatbot on the web interface. It shows the responsive nature of the bot and the UI details that make the bot seem more human-like.
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <img src="images/Chat1.jpg" alt="ELIZA Chatbot Screenshot" width="300"> 
+    <img src="images/Chat2.jpg" alt="ELIZA Chatbot Screenshot" width="300">
+    <img src="images/Chat3.jpg" alt="ELIZA Chatbot Screenshot" width="300">
+    <img src="images/Chat4.jpg" alt="ELIZA Chatbot Screenshot" width="300">
+</div>
 
 ## **Development Difficulties**
 
@@ -105,45 +148,24 @@ This project is made up of two main code sections:
 - Solution: A visible typing indicator and a 1-second delay before responses was added, simulating a human responder.
 - Reflection: Small improvements had a good impact on the chatbot’s realism, showing how important design details are for user engagement.
 
+## **Testing**
 
-
-
-## **Outputs**
-
-### **Third-Order Letter Approximation Model**
-
-- This is an example of the Trigram model working. 
+### **Third-Order Letter Approximation Model Examples**
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <img src="images/CleanedText.jpg" alt="Cleaned Text Screenshot" width="700"> 
-    <img src="images/GeneratedText.jpg" alt="Generated Text Screenshot" width="700">
-    <img src="images/LoadedWordList.jpg" alt="Words List Loaded Successfully Screenshot" width="700">
-    <img src="images/TrigramPercentageAnalysis.jpg" alt="Valid English Words Percentage Screenshot" width="700">
+    <img src="images/TrigramsTest1.jpg" alt="Trigrams Model Screenshot" width="300"> 
+    <img src="images/TrigramsTest2.jpg" alt="Trigrams Model Screenshot" width="300">
+    <img src="images/TrigramsTest3.jpg" alt="Trigrams Model Screenshot" width="300">
 </div>
 
 
 ### **ELIZA Chatbot**
 
-#### ELIZA in Action
-
-- This is an example of a user interacting with the ELIZA chatbot on the web interface. It shows the responsive nature of the bot and the UI details that make the bot seem more human-like.
-
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <img src="images/Chat1.jpg" alt="ELIZA Chatbot Screenshot" width="300"> 
-    <img src="images/Chat2.jpg" alt="ELIZA Chatbot Screenshot" width="300">
-    <img src="images/Chat3.jpg" alt="ELIZA Chatbot Screenshot" width="300">
-    <img src="images/Chat4.jpg" alt="ELIZA Chatbot Screenshot" width="300">
+    <img src="images/ElizaEvolution4.jpg" alt="ELIZA Chatbot Screenshot" width="300"> 
+    <img src="images/ElizaEvolution1.png" alt="ELIZA Chatbot Screenshot" width="300">
+    <img src="images/ElizaEvolution2.png" alt="ELIZA Chatbot Screenshot" width="300">
 </div>
-
-
-## **Tests**
-
-
-
-## **Demonstration**
-
-
-
 
 
 ## **Bibliography**
